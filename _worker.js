@@ -216,10 +216,10 @@ async function vlessOverWSHandler(request) {
 			}
 
 			// If UDP and not DNS port, close it
-			//if (isUDP && portRemote !== 53) {
-			//	throw new Error('UDP proxy only enabled for DNS which is port 53');
-			//	// cf seems has bug, controller.error will not end stream
-			//}
+			if (isUDP && portRemote !== 53) {
+				throw new Error('UDP proxy only enabled for DNS which is port 53');
+				// cf seems has bug, controller.error will not end stream
+			}
 
 			if (isUDP && portRemote === 53) {
 				isDns = true;
